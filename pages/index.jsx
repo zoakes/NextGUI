@@ -9,6 +9,8 @@ import { ChartComponent } from '../components/ChartComponent';
 
 import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/ReChartComponent';
+import ChartJSComponent from '../components/ChartJsComponent';
+// import PlotlyComponent from '../components/PlotlyComponent';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -66,6 +68,8 @@ export default function HomePage() {
       <ChartComponent data={initialData} />
 
       <MultiLineChartComponent />
+      {/* <ChartJSComponent/> */}
+      
     </div>
   );
 }

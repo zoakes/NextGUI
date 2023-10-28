@@ -1,4 +1,3 @@
-import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 const exampleDataMarked = [
@@ -18,6 +17,8 @@ const exampleDataMarked = [
     { x: 'Jan', y1: 100, y2: 80 },
 ];
 
+
+
 const ChartJSComponent = () => {
     const data = {
         labels: exampleDataMarked.map(item => item.x),
@@ -25,35 +26,47 @@ const ChartJSComponent = () => {
             {
                 label: 'y1',
                 data: exampleDataMarked.map(item => item.y1),
+                fill: false,
                 borderColor: 'blue',
-                fill: false
+                tension: 0.1
             },
             {
                 label: 'y2',
                 data: exampleDataMarked.map(item => item.y2),
+                fill: false,
                 borderColor: 'red',
-                fill: false
+                tension: 0.1
             },
             {
                 label: 'buy',
-                data: exampleDataMarked.map(item => item.buy),
-                borderColor: 'green',
+                data: exampleDataMarked.map(item => item.buy || null),
                 fill: false,
-                pointRadius: exampleDataMarked.map(item => item.buy ? 5 : 0)
+                borderColor: 'green',
+                backgroundColor: 'green',
+                pointRadius: exampleDataMarked.map(item => item.buy ? 5 : 0), // Make point visible only if buy is present
+                tension: 0.1,
+                showLine: false // Do not show line for buy data
             },
             {
                 label: 'sell',
-                data: exampleDataMarked.map(item => item.sell),
-                borderColor: 'red',
+                data: exampleDataMarked.map(item => item.sell || null),
                 fill: false,
-                pointRadius: exampleDataMarked.map(item => item.sell ? 5 : 0)
+                borderColor: 'red',
+                backgroundColor: 'red',
+                pointRadius: exampleDataMarked.map(item => item.sell ? 5 : 0), // Make point visible only if sell is present
+                tension: 0.1,
+                showLine: false // Do not show line for sell data
             }
         ]
     };
 
-    return <Line data={data} />;
-}
+    return (
+        <div>
+            <Line data={data} />
+        </div>
+    );
+};
 
 
-
+// something is wrong with this import... it 'was' working, now it's not? wtf..
 export default ChartJSComponent;

@@ -1,4 +1,3 @@
-import React from 'react';
 import Plot from 'react-plotly.js';
 
 const exampleDataMarked = [
@@ -18,7 +17,11 @@ const exampleDataMarked = [
     { x: 'Jan', y1: 100, y2: 80 },
 ];
 
+
+
 const PlotlyComponent = () => {
+
+
     const trace1 = {
         x: exampleDataMarked.map(item => item.x),
         y: exampleDataMarked.map(item => item.y1),
@@ -35,6 +38,8 @@ const PlotlyComponent = () => {
         line: {color: 'red'}
     };
 
+   
+   // Original
     const trace3 = {
         x: exampleDataMarked.map(item => item.buy ? item.x : null),
         y: exampleDataMarked.map(item => item.buy),
@@ -50,9 +55,18 @@ const PlotlyComponent = () => {
         name: 'sell',
         marker: {color: 'red', size: 10}
     };
+    
+    
 
     const layout = {
-        title: 'Plotly'
+        title: 'Plotly',
+        legend: {
+            x: 0.5,
+            y: -0.2, // Position the legend below the chart
+            xanchor: 'center',
+            yanchor: 'top',
+            orientation: 'h' // Horizontal orientation
+        }
     };
 
     return <Plot data={[trace1, trace2, trace3, trace4]} layout={layout} />;
