@@ -6,6 +6,7 @@ export const RTChartComponent = props => {
         // Dont know if we can pass this, as it might try creating both within useEffect?
         labels = [], // initial series labels, can be an empty array if you expect all series to come from WebSocket
         websocket_url,
+        componentAlgoId = '',
         def_colors: {
             backgroundColor = 'white',
             lineColor = '#2962FF',
@@ -55,41 +56,48 @@ export const RTChartComponent = props => {
 
         socket.onmessage = event => {
             // The event carries the 'data' property which contains the message from the server.
-            // For this implementation, it's expected that the server sends JSON stringified data.
-
+            // it also carries the 'type' and 'id'
                 // Expected structure:
-                // [
-                //     {
-                //         "id": "series_id1",
-                //         "data": [
-                //             {"time": 123, "value": 456},
-                //             ...
-                //         ]
-                //     },
-                //     {
-                //         "id": "series_id2",
-                //         "data": [
-                //             {"time": 789, "value": 1011},
-                //             ...
-                //         ]
-                //     },
-                //     ... potentially more series updates ...
-                // ]
-            const seriesUpdates = JSON.parse(event.data);
-        
-            // Loop through each series update in the message
-            seriesUpdates.forEach(update => {
-                const id = update.id;
-                const dataUpdates = update.data;
-        
-                // If series not present + initialized, create it.
-                if (!seriesById.current[id]) {
-                    addNewSeries(id);
+
+                // {
+                //     "type": "chartUpdate",
+                //     "id": "algo1",
+                //     "data": [
+                //         {
+                //             "series_id": "series_id1",
+                //             "points": [
+                //                 {"time": 123, "value": 456},
+                //                 //... more data points ...
+                //             ]
+                //         },
+                //         // ... other series updates for algo1 ...
+                //     ]
+                // }
+                const message = JSON.parse(event.data);
+    
+                if (message.type === "chartUpdate") {
+                    const algoId = message.id;
+                    
+                    // If the current algo_id doesn't match the component's algo_id, ignore the update
+                    if (algoId !== componentAlgoId) {
+                        return;
+                    }
+                    
+                    message.data.forEach(update => {
+                        const seriesId = update.series_id;
+                        const dataUpdates = update.points;
+                        
+                        // create new series, if not defined.
+                        if (!seriesById.current[seriesId]) {
+                            addNewSeries(seriesId);
+                        }
+                        dataUpdates.forEach(val => {
+                            seriesById.current[seriesId].update(val);
+                        });
+                    });
+                } else {
+                    console.warn("Received unknown event type:", message.type);
                 }
-                dataUpdates.forEach(val => {
-                    seriesById.current[id].update(val);
-                });
-            });
         };
 
         socket.onerror = error => {
