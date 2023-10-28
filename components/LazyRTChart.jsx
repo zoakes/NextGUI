@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 
 export const RTChartComponent = props => {
     const {
+        // Dont know if we can pass this, as it might try creating both within useEffect?
         labels = [], // initial series labels, can be an empty array if you expect all series to come from WebSocket
         websocket_url,
         def_colors: {
@@ -29,13 +30,18 @@ export const RTChartComponent = props => {
             height: 300,
         });
 
-        labels.forEach(label => {
-            const seriesInstance = chart.addAreaSeries({
+        // closure -- must be in useEffect.
+        const addNewSeries = (label) => {
+            const seriesInstance = chart.addLineSeries({
                 lineColor,
                 topColor: areaTopColor,
                 bottomColor: areaBottomColor,
             });
             seriesById.current[label] = seriesInstance;
+        };
+
+        labels.forEach(label => {
+            addNewSeries(label);
         });
 
         const handleResize = () => {
@@ -78,57 +84,11 @@ export const RTChartComponent = props => {
         
                 // If series not present + initialized, create it.
                 if (!seriesById.current[id]) {
-                    const newSeries = chart.addLineSeries({
-                        lineColor,
-                        topColor: areaTopColor,
-                        bottomColor: areaBottomColor,
-                    });
-                    seriesById.current[id] = newSeries;
+                    addNewSeries(id);
                 }
                 dataUpdates.forEach(val => {
                     seriesById.current[id].update(val);
                 });
-            });
-        };
-
-        socket.onmessage = event => {
-            // The event carries the 'data' property which contains the message from the server.
-            // For this implementation, it's expected that the server sends JSON stringified data.
-
-            // Expected structure:
-            // [
-            //     {
-            //         "id": "series_id1",
-            //         "data": [
-            //             {"time": 123, "value": 456},
-            //             ...
-            //         ]
-            //     },
-            //     {
-            //         "id": "series_id2",
-            //         "data": [
-            //             {"time": 789, "value": 1011},
-            //             ...
-            //         ]
-            //     },
-            //     ... potentially more series updates ...
-            // ]
-            const data = JSON.parse(event.data);
-            const id = data.id;
-            const dataUpdates = data.data;
-
-            // If series not defined, define it + initialize it.
-            if (!seriesById.current[id]) {
-                const newSeries = chart.addLineSeries({
-                    lineColor,
-                    topColor: areaTopColor,
-                    bottomColor: areaBottomColor,
-                });
-                seriesById.current[id] = newSeries;
-            }
-            // update the series.
-            dataUpdates.forEach(val => {
-                seriesById.current[id].update(val);
             });
         };
 
@@ -137,6 +97,11 @@ export const RTChartComponent = props => {
         };
 
         socket.onclose = event => {
+            // The 'close' event has a few properties that can provide info on the disconnection:
+            // - event.wasClean: boolean indicating if the connection closed cleanly.
+            // - event.code: status code indicating why the connection closed.
+            // - event.reason: a human-readable string explaining why the connection closed.
+            // Note: Not all disconnects will have 'event.reason' populated.
             if (event.wasClean) {
                 console.log(`Closed cleanly, code=${event.code}, reason=${event.reason}`);
             } else {
@@ -150,7 +115,7 @@ export const RTChartComponent = props => {
             socket.close();
         };
 
-    }, [backgroundColor, lineColor, textColor, areaTopColor, areaBottomColor, websocket_url]);
+    }, [labels, backgroundColor, lineColor, textColor, areaTopColor, areaBottomColor, websocket_url]);
 
     return <div ref={chartContainerRef} />;
 };
