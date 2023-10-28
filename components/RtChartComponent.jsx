@@ -27,7 +27,10 @@ event{
 
 export const RTChartComponent = props => {
 	const {
-		serie = [], // pass in {id: 'id', data: []}
+        // We can probably get rid of this prop + setData workflow, 
+        // we aren't going to initialize anything really?
+        // more just wait for updates.
+		serie = [], // pass in [ {id: 'id', data: []}, ... ]
         websocket_url = "google.com", // bullshit intermediate.
         def_colors: {
 			backgroundColor = 'white',
@@ -104,9 +107,12 @@ export const RTChartComponent = props => {
 
 			return () => {
 				window.removeEventListener('resize', handleResize);
-                // seriesInstances.forEach(s => chart.removeSeries(s)); // think chart.remove does this?
+                // seriesInstances.forEach(s => chart.removeSeries(s)); 
+                // think chart.remove does this?
 				chart.remove();
-                socket.close(); // Cleanup on component unmount
+
+                // Cleanup on component unmount
+                socket.close(); 
 			};
 		},
 		[serie, backgroundColor, lineColor, textColor, areaTopColor, areaBottomColor]
