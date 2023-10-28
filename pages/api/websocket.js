@@ -23,6 +23,25 @@ function startWebSocketServer(algoId, port) {
 
     ws.on('message', (message) => {
       console.log(`[${algoId}] Received message: ${message}`);
+
+        // data example
+        // [
+        //     {
+        //         "id": "series_id1", //(i.e. child_ask)
+        //         "data": [
+        //             {"time": 123, "value": 456}, //(i.e. iso timestamps)
+        //             ...
+        //         ]
+        //     },
+        //     {
+        //         "id": "series_id2", //(i.e. child_bid)
+        //         "data": [
+        //             {"time": 789, "value": 1011}, 
+        //             ...
+        //         ]
+        //     },
+        //     ... potentially more series updates ...
+        // ]
       
       // Broadcast the message to all connected clients of the same algo
       wss.clients.forEach(client => {

@@ -35,7 +35,7 @@ subscription.on('message', (message) => {
         client.send(JSON.stringify({
           algo_id: algoId,
           data: rows
-            // data example:
+            // data example: (Some work to get it to this, most likely)
             // [
             //     {
             //         "id": "series_id1",
