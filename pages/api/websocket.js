@@ -8,7 +8,9 @@ const algoConfig = require('../../config'); // version safe, w node.
 
 let algoPortMapping = algoConfig; // re-export, sort of.
 
-function startWebSocketServer(algoId, port) {
+let wssMap = {};
+
+export default function startWebSocketServer(algoId, port) {
   const app = express();
   const server = http.createServer(app);
   const wss = new WebSocket.Server({ server });
@@ -42,8 +44,13 @@ function startWebSocketServer(algoId, port) {
 
 // Start a WebSocket server for each algorithm
 Object.entries(algoPortMapping).forEach(([algoId, port]) => {
-  startWebSocketServer(algoId, port);
+  wssMap[algoId] = startWebSocketServer(algoId, port);
 });
+
+module.exports = {
+    wssMap,
+    startWebSocketServer
+};
 
 
 /*
