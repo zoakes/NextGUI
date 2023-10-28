@@ -1,6 +1,7 @@
 import { createChart, ColorType } from 'lightweight-charts';
 import React, { useEffect, useRef } from 'react';
 
+// Called like: <RTChartComponent websocket_url={`ws://your-server:${algoPortMapping[componentAlgoId]}`}/>
 export const RTChartComponent = props => {
     const {
         // Dont know if we can pass this, as it might try creating both within useEffect?
