@@ -10,7 +10,7 @@ let algoPortMapping = algoConfig; // re-export, sort of.
 
 let wssMap = {};
 
-export default function startWebSocketServer(algoId, port) {
+function startWebSocketServer(algoId, port) {
   const app = express();
   const server = http.createServer(app);
   const wss = new WebSocket.Server({ server });

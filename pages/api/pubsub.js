@@ -1,10 +1,17 @@
 const { PubSub } = require('@google-cloud/pubsub');
 
 
-const { startWebSocketServers } = require('./websocket'); // adjust the path as needed
-const wssMap = startWebSocketServers();
-const pubsub = new PubSub();
+const { startWebSocketServer } = require('./websocket'); 
+const algoConfig = require('../../config');
+let algoPortMapping = algoConfig; // re-export, sort of.
 
+// Start a WebSocket server for each algorithm
+Object.entries(algoPortMapping).forEach(([algoId, port]) => {
+    wssMap[algoId] = startWebSocketServer(algoId, port);
+  });
+
+// Start a pubsub subscriber
+const pubsub = new PubSub();
 
 // Create or reference an existing topic
 const topicName = 'YOUR_TOPIC_NAME';
