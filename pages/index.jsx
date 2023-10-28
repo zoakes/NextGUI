@@ -11,10 +11,7 @@ import { ChartComponent } from '../components/ChartComponent';
 
 import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/ReChartComponent';
-import ChartJSComponent from '../components/ChartJsComponent';
-import PlotlyComponent from '../components/PlotlyComponent';
 import HighchartsExample from '../components/HighchartComponent';
-// import PlotlyComponent from '../components/PlotlyComponent';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -72,10 +69,7 @@ export default function HomePage() {
       <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
 
       <ChartComponent data={initialData} />
-
       <MultiLineChartComponent />
-      
-      <PlotlyComponent />
       <HighchartsExample />
     </div>
   );
