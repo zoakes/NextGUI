@@ -7,8 +7,8 @@ import SearchAppBar from '../components/SearchBar';
 import { ChartComponent } from '../components/ChartComponent';
 // import styles from '../styles/ButtonStyles.module.css'; // Not working (need to read more on tailwind)
 
-import { algoConfig } from '../config';
-
+import { algoConfig, host } from '../config';
+// const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
 function Header({ title }) {

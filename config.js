@@ -3,3 +3,6 @@ export const algoConfig = {
   'algo2': 8082,
   // ... add more algorithms and corresponding ports as needed
 };
+
+
+export const host = 'ws://localhost'
