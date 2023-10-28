@@ -41,6 +41,13 @@ export default function HomePage() {
     setLikes(likes + 1);
   }
 
+  const card_props = [
+    {title: "Gross Profit", value: "$425.5M", progress: 90},
+    {title: "Net Profit   ", value: "$325.5M", progress: 80},
+    {title: "Sharpe Ratio", value: "2.56", progress: 70},
+    {title: "Quality     ", value: "87%", progress: 87},
+  ]
+
   const chart_ids = Array.from({ length: 16 }, (_, i) => i + 1);
 
   return (
@@ -68,15 +75,18 @@ export default function HomePage() {
 
       <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
 
-      <p className='m-10 flex flex-col items-center'> this would be a great place for summary charts. Total PNL. Quality Table. Metric 'cards' Etc.</p>
+      <p className='m-10 flex flex-col items-center'> place for summary charts. Total PNL. Quality Table. Metric 'cards' Etc.</p>
       
       <Grid container spacing={2} className='my-5'>
-        {[1,2,3,4].map((item) => (
+        {card_props.map((item) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
             <div className='flex items-center justify-center'>
-              <CardInvertedColors />
+              <CardInvertedColors 
+                title={item.title} 
+                progress={item.progress} 
+                value={item.value}
+              />
             </div>
-
           </Grid>
         ))}
       </Grid>

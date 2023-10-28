@@ -10,3 +10,6 @@ export default function MyCard({title, content}) {
     </Card>
   );
 }
+
+
+// TODO: wrap this up in figma, and make a great card there, then translate it to react.
