@@ -24,8 +24,6 @@ const initialData = [
 ];
 
 export default function HomePage() {
-  const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
-
   const [likes, setLikes] = useState(0);
 
   function handleClick() {
@@ -43,21 +41,21 @@ export default function HomePage() {
             
             <ChartComponent data={initialData} />
             <div className='flex items-center justify-center'>
-              <h6>Label {item}</h6>
+              <h6>Chart {item}</h6>
             </div>
-            
+
           </Grid>
         ))}
       </Grid>
-      
-      <div className='flex items-center justify-center'>
-      <button className="hover:bg-blue-500 focus:outline-none active:bg-blue-700" onClick={handleClick}>Like Cats ({likes})</button> 
-      </div>
-      <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
-        <p className="text-gray-500">You can build anything!</p>
-        <div className="text-xl font-medium text-black">Tailwind CSS</div>
-        <p className="text-gray-500">Even large cats.</p>
-      </div>
+
+      {/* Fucking around w Tailwind -- rm */}
+      <button 
+          className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700"
+          onClick={handleClick}
+      >
+          <p className="text-gray-500 hover:text-white mb-2 transition duration-300 ease-in-out">Click to support Big Cat.</p> 
+          Like Cats ({likes})
+      </button>
 
       <ChartComponent data={initialData} />
     </div>
