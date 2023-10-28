@@ -5,6 +5,11 @@ import { Paper, Toolbar } from '@mui/material';
 
 import SearchAppBar from '../components/SearchBar';
 import { ChartComponent } from '../components/ChartComponent';
+// import styles from '../styles/ButtonStyles.module.css'; // Not working (need to read more on tailwind)
+
+import { algoConfig } from '../config';
+
+
 
 function Header({ title }) {
   return <h1>{title ? title : 'Default title'}</h1>;
@@ -50,7 +55,7 @@ export default function HomePage() {
 
       {/* Fucking around w Tailwind -- rm */}
       <button 
-          className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700"
+          className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700 group ${styles.spinForever}"
           onClick={handleClick}
       >
           <p className="text-gray-500 hover:text-white mb-2 transition duration-300 ease-in-out">Click to support Big Cat.</p> 
