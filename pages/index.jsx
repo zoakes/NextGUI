@@ -8,6 +8,7 @@ import { ChartComponent } from '../components/ChartComponent';
 // import styles from '../styles/ButtonStyles.module.css'; // Not working (need to read more on tailwind)
 
 import { algoConfig, host } from '../config';
+import { MultiLineChartComponent } from '../components/ReChartComponent';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -63,6 +64,8 @@ export default function HomePage() {
       </button>
 
       <ChartComponent data={initialData} />
+
+      <MultiLineChartComponent />
     </div>
   );
 }
