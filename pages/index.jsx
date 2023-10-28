@@ -3,6 +3,8 @@ import Grid from '@mui/material/Grid';
 import { Paper, Toolbar } from '@mui/material';
 
 
+
+
 import SearchAppBar from '../components/SearchBar';
 import { ChartComponent } from '../components/ChartComponent';
 // import styles from '../styles/ButtonStyles.module.css'; // Not working (need to read more on tailwind)
@@ -11,6 +13,7 @@ import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/ReChartComponent';
 import ChartJSComponent from '../components/ChartJsComponent';
 import PlotlyComponent from '../components/PlotlyComponent';
+import HighchartsExample from '../components/HighchartComponent';
 // import PlotlyComponent from '../components/PlotlyComponent';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
@@ -66,11 +69,14 @@ export default function HomePage() {
           Like Cats ({likes})
       </button>
 
+      <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
+
       <ChartComponent data={initialData} />
 
       <MultiLineChartComponent />
-      {/* <ChartJSComponent/> */}
-      {/* <PlotlyComponent /> */}
+      
+      <PlotlyComponent />
+      <HighchartsExample />
     </div>
   );
 }
