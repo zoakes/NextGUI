@@ -1,6 +1,30 @@
 import { createChart, ColorType } from 'lightweight-charts';
 import React, { useEffect, useRef } from 'react';
 
+/*
+
+props.serie will take the form of:
+[
+    {
+        id: 'field', 
+        data: [ 
+            {'time': 123, 'value': 456},
+            ...
+        ] 
+    }
+]
+
+
+websocket.serie will take similar form:
+
+event{
+    data{
+        id: <series_id>
+        data: [ {}, {}, ...] // 1 or more updates per series.
+    }
+}
+*/
+
 export const RTChartComponent = props => {
 	const {
 		serie = [], // pass in {id: 'id', data: []}
@@ -33,7 +57,6 @@ export const RTChartComponent = props => {
 			chart.timeScale().fitContent();
 
             const seriesInstances = [];
-            
             let series_by_id = {};
             props.series.forEach((serie) => {
                 const newSeries = chart.addAreaSeries({
@@ -51,7 +74,7 @@ export const RTChartComponent = props => {
 
             // -------------------------- WEBSOCKET ----------------------------------- 
 
-            const socket = new WebSocket(yourWebSocketURL);
+            const socket = new WebSocket(websocket_url);
 
             socket.onopen = (event) => {
                 // Handle connection opened
