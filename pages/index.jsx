@@ -9,9 +9,11 @@ import SearchAppBar from '../components/SearchBar';
 import { ChartComponent } from '../components/ChartComponent';
 // import styles from '../styles/ButtonStyles.module.css'; // Not working (need to read more on tailwind)
 
+import MyCard from '../components/MyCard';
 import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/ReChartComponent';
 import HighchartsExample from '../components/HighchartComponent';
+import CardInvertedColors from '../components/JoyCard';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -56,8 +58,6 @@ export default function HomePage() {
           </Grid>
         ))}
       </Grid>
-
-      {/* Fucking around w Tailwind -- rm */}
       <button 
           className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700 group ${styles.spinForever}"
           onClick={handleClick}
@@ -68,6 +68,18 @@ export default function HomePage() {
 
       <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
 
+      <p className='m-10 flex flex-col items-center'> this would be a great place for summary charts. Total PNL. Quality Table. Metric 'cards' Etc.</p>
+      
+      <Grid container spacing={2} className='my-5'>
+        {[1,2,3,4].map((item) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
+            <div className='flex items-center justify-center'>
+              <CardInvertedColors />
+            </div>
+
+          </Grid>
+        ))}
+      </Grid>
       <ChartComponent data={initialData} />
       <MultiLineChartComponent />
       <HighchartsExample />
