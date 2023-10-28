@@ -4,10 +4,11 @@
         "start:next": "next dev",
         "dev": "next dev",
         "dev-ws": "concurrently \"npm run start:server\" \"npm run start:next\""
-      },
+    },
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
+        "@google-cloud/pubsub": "^4.0.6",
         "@mui/icons-material": "^5.14.15",
         "@mui/material": "^5.14.15",
         "autoprefixer": "^10.4.16",

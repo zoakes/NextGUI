@@ -62,4 +62,7 @@ To be clear on the flow:
 4.  Upon receiving a message, the WebSocket server broadcasts it to all connected clients for that algorithm.
 
 5.  Each client (React component) processes the received message and updates the chart accordingly.
+
+
+This could also subscribe to pubsub, or poll things, etc -- but 'push' is going to be most efficient.
 */
