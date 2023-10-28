@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scatter,ScatterChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { Brush, Scatter,ScatterChart, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 // this just... fits better, easier to map to this. Update 'all' at once.
 const exampleData = [
@@ -80,6 +80,11 @@ export const MultiLineChartComponent = props => {
                     <YAxis stroke={textColor} />
                     <Tooltip />
                     <Legend />
+                    <Brush
+                        dataKey="x"
+                        height={30}
+                        stroke="#8884d8"
+                    />
                     <Line
                         type="monotone"
                         dataKey="y1"
