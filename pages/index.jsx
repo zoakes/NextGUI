@@ -14,6 +14,7 @@ import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/ReChartComponent';
 import HighchartsExample from '../components/HighchartComponent';
 import CardInvertedColors from '../components/JoyCard';
+import MyDataGrid from '../components/DataTable';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -93,6 +94,7 @@ export default function HomePage() {
       <ChartComponent data={initialData} />
       <MultiLineChartComponent />
       <HighchartsExample />
+      <MyDataGrid />
     </div>
   );
 }
