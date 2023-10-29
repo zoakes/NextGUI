@@ -45,11 +45,11 @@ export default function MuiLineChart({data = def_data}) {
         xAxis={[{ data: data.map((_, index) => index) }]}
         series={[
         {
-            name: "Y1 Series",
+            name: "Y1",
             data: y1SeriesData,
         },
         {
-            name: "Y2 Series",
+            name: "Y2",
             data: y2SeriesData,
         }
         // Include more series or annotations here if necessary

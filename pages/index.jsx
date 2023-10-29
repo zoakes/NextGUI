@@ -95,7 +95,8 @@ export default function HomePage() {
       <ChartComponent data={initialData} />
       <MultiLineChartComponent />
       <HighchartsExample />
-      <MuiLineChart />
+      {/* <MuiLineChart /> */}
+
       <MyDataGrid />
     </div>
   );
