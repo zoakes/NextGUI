@@ -15,6 +15,7 @@ import { MultiLineChartComponent } from '../components/ReChartComponent';
 import HighchartsExample from '../components/HighchartComponent';
 import CardInvertedColors from '../components/JoyCard';
 import MyDataGrid from '../components/DataTable';
+import MuiLineChart from '../components/MuiLine';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -94,6 +95,7 @@ export default function HomePage() {
       <ChartComponent data={initialData} />
       <MultiLineChartComponent />
       <HighchartsExample />
+      <MuiLineChart />
       <MyDataGrid />
     </div>
   );
