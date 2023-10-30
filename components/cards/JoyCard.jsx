@@ -30,7 +30,7 @@ export default function CardInvertedColors({
   )
 }) {
   return (
-    <Card variant="solid" color="primary" invertedColors>
+    <Card className="bg-gradient-to-b from-custom-blue to-blue-700" variant="solid" color="primary" invertedColors>
       <CardContent orientation="horizontal">
         <CircularProgress size="lg" determinate value={progress}>
           {icon}

@@ -89,10 +89,6 @@ export default function HomePage() {
       </button>
 
       <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
-
-      <p className='m-10 flex flex-col items-center'> place for summary charts. Total PNL. Quality Table. Metric 'cards' Etc.</p>
-      
-
       <ChartComponent data={initialData} />
       <MultiLineChartComponent />
       <HighchartsExample />
