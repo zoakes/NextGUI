@@ -14,7 +14,6 @@ import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/ReChartComponent';
 import HighchartsExample from '../components/HighchartComponent';
 import CardInvertedColors from '../components/JoyCard';
-import MyDataGrid from '../components/DataTable';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -66,18 +65,7 @@ export default function HomePage() {
           </Grid>
         ))}
       </Grid>
-      <button 
-          className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700 group ${styles.spinForever}"
-          onClick={handleClick}
-      >
-          <p className="text-gray-500 hover:text-white mb-2 transition duration-300 ease-in-out">Click to support Big Cat.</p> 
-          Like Cats ({likes})
-      </button>
 
-      <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
-
-      <p className='m-10 flex flex-col items-center'> place for summary charts. Total PNL. Quality Table. Metric 'cards' Etc.</p>
-      
       <Grid container spacing={2} className='my-5'>
         {card_props.map((item) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
@@ -91,10 +79,23 @@ export default function HomePage() {
           </Grid>
         ))}
       </Grid>
+      
+      <button 
+          className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700 group ${styles.spinForever}"
+          onClick={handleClick}
+      >
+          <p className="text-gray-500 hover:text-white mb-2 transition duration-300 ease-in-out">Click to support Big Cat.</p> 
+          Like Cats ({likes})
+      </button>
+
+      <h1 className='m-10 flex flex-col items-center'>Testing other chart types</h1>
+
+      <p className='m-10 flex flex-col items-center'> place for summary charts. Total PNL. Quality Table. Metric 'cards' Etc.</p>
+      
+
       <ChartComponent data={initialData} />
       <MultiLineChartComponent />
       <HighchartsExample />
-      <MyDataGrid />
     </div>
   );
 }
