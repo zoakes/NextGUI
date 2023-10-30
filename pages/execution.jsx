@@ -1,8 +1,8 @@
 
-import { ChartComponent } from '../components/ChartComponent';
-import MyDataGrid from '../components/DataTable';
-import CardInvertedColors from '../components/JoyCard';
-import { MultiLineChartComponent } from '../components/ReChartComponent';
+import { ChartComponent } from '../components/charts/ChartComponent';
+import MyDataGrid from '../components/tables/DataTable';
+import CardInvertedColors from '../components/cards/JoyCard';
+import { MultiLineChartComponent } from '../components/charts/ReChartComponent';
 import SearchAppBar from '../components/SearchBar';
 import { Box, Grid, Typography } from '@mui/material';
 
