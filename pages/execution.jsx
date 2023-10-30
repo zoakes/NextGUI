@@ -26,6 +26,69 @@ export default function ExecPage() {
         { time: '2018-12-30', value: 22.68 },
         { time: '2018-12-31', value: 22.67 },
     ];
+
+    // Default columns
+    const tableColumns = [
+        { field: 'id', headerName: 'ID', width: 90, sortable: true },
+        {
+            field: 'algo_id',
+            headerName: 'Algo ID',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'symbol',
+            headerName: 'Symbol',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'leg',
+            headerName: 'Leg',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'quality',
+            headerName: 'Quality',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'slip',
+            headerName: 'Slippage',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'target',
+            headerName: 'Target (Ticks)',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'captured',
+            headerName: 'Captured (Ticks)',
+            width: 150,
+            sortable: true
+        },
+        {
+            field: 'spread',
+            headerName: 'Spread (Ticks)',
+            width: 150,
+            sortable: true
+        },
+    ];
+
+    const tableRows = [
+        { id: 1, algo_id: '1234', symbol: 'SNOW', leg: 'child', quality: .98, slip: .02 },
+        { id: 2, algo_id: '1235', symbol: 'AAPL', leg: 'parent', quality: .98, slip: .02 },
+        { id: 3, algo_id: '1236', symbol: 'SNOW', leg: 'child', quality: .98, slip: .02 },
+        { id: 4, algo_id: '1237', symbol: 'AMD', leg: 'parent', quality: .98, slip: .02 },
+        { id: 5, algo_id: '1238', symbol: 'GOOG', leg: 'child', quality: .98, slip: .02 },
+        // ... other rows
+    ];
+
   return (
     <div>
         <SearchAppBar />
@@ -54,7 +117,7 @@ export default function ExecPage() {
 
 
             <Typography variant='h5' className='px-10 pb-5'>Fills</Typography>
-            <MyDataGrid/>
+            <MyDataGrid columns={tableColumns} rows={tableRows}/>
         </Box>
     </div>
    
