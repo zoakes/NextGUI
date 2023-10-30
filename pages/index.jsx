@@ -54,19 +54,6 @@ export default function HomePage() {
     <div>
       <SearchAppBar></SearchAppBar>
       <Grid container spacing={2} className='my-5'>
-        {chart_ids.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
-            
-            <ChartComponent data={initialData} />
-            <div className='flex items-center justify-center'>
-              <h6>Chart {item}</h6>
-            </div>
-
-          </Grid>
-        ))}
-      </Grid>
-
-      <Grid container spacing={2} className='my-5'>
         {card_props.map((item) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
             <div className='flex items-center justify-center'>
@@ -79,7 +66,18 @@ export default function HomePage() {
           </Grid>
         ))}
       </Grid>
-      
+      <Grid container spacing={2} className='my-5'>
+        {chart_ids.map((item) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
+            
+            <ChartComponent data={initialData} />
+            <div className='flex items-center justify-center'>
+              <h6>Chart {item}</h6>
+            </div>
+
+          </Grid>
+        ))}
+      </Grid>      
       <button 
           className="p-6 my-5 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex flex-col items-center justify-center hover:bg-blue-500 focus:outline-none active:bg-blue-700 group ${styles.spinForever}"
           onClick={handleClick}

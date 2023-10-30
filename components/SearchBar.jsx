@@ -83,15 +83,15 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link href='/'>YX</Link>
+            <Link href='/' className='hover:text-blue-400'>YX</Link>
             
           </Typography>
           <Box sx={{  display: { xs: 'none', sm: 'none', md: 'block'} , alignItems: 'center', textAlign: 'space-evenly' }}>
             <Link href='/execution'>
-              <Button className='px-20' width={20} color='inherit'>Execution</Button>
+              <Button className='px-20 hover:text-blue-400' width={20} color='inherit'>Execution</Button>
             </Link>
             <Link href='/exposure'>
-              <Button className='px-20' width={20} color='inherit'>Exposure</Button>
+              <Button className='px-20 hover:text-blue-400' width={20} color='inherit'>Exposure</Button>
             </Link>
           </Box>
           <Search>
