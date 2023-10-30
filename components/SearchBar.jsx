@@ -86,6 +86,10 @@ export default function SearchAppBar() {
             YX
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'space-evenly' }}>
+            
+            <Link href='/'>
+              <Button className='px-20' width={20} color='inherit'>Home</Button>
+            </Link>
             <Link href='/execution'>
               <Button className='px-20' width={20} color='inherit'>Execution</Button>
             </Link>
