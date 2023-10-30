@@ -10,6 +10,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Button, Stack } from '@mui/material';
+import Link from 'next/link';
 
 const theme = createTheme({
   palette: {
@@ -81,8 +83,16 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Data Cat
+            YX
           </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'space-evenly' }}>
+            <Link href='/execution'>
+              <Button className='px-20' width={20} color='inherit'>Execution</Button>
+            </Link>
+            <Link href='/exposure'>
+              <Button className='px-20' width={20} color='inherit'>Exposure</Button>
+            </Link>
+          </Box>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

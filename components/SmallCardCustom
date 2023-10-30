@@ -1,21 +1,5 @@
-import { Card, CardContent, Typography } from '@mui/material';
-
-export default function MyCard({title, content}) {
-  return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5">{title}</Typography>
-        <Typography>{content}</Typography>
-      </CardContent>
-    </Card>
-  );
-}
-
-
-// TODO: wrap this up in figma, and make a great card there, then translate it to react.
-// desire is to have color coded, w a background chart representation, a chg arrow and amount, etc
-
-/*
+export default function SmallCard(){
+    return (
         <div className="w-[143px] h-[119px] relative bg-zinc-300">
             <div className="p-2.5 left-0 top-[-0px] absolute justify-center items-center gap-2.5 inline-flex">
                 <div className="text-black text-xs font-bold font-['Inter']">Sharpe Ratio</div>
@@ -31,4 +15,5 @@ export default function MyCard({title, content}) {
                 <div className="text-black text-xs font-normal font-['Inter']">+.03</div>
             </div>
         </div>
-*/
+    );
+}

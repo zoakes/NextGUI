@@ -80,6 +80,7 @@ export const MultiLineChartComponent = props => {
                     <YAxis stroke={textColor} />
                     <Tooltip />
                     <Legend />
+                    {/*  THIS lets us zoom in... */}
                     <Brush
                         dataKey="x"
                         height={30}
