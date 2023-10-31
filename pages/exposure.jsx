@@ -61,6 +61,7 @@ export default function ExposurePage() {
   return (
     <div>
         <SearchAppBar />
+        {/* <Typography variant='h4' className='p-5 font-hw'>Exposure</Typography> */}
         <Box>
             <Grid container spacing={2} className='my-5'>
               {card_props.map((item) => (

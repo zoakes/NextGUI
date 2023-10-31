@@ -107,7 +107,7 @@ export default function ExecPage() {
                 <div className="text-white text-xs font-normal font-['Inter']">+.03</div>
             </div>
         </div> */}
-
+        <Typography variant='h5' className='pt-10 pl-20 font-hw'>Execution</Typography>
         <Box>
             <Grid container spacing={2} className='my-5'>
                 {card_props.map((item) => (
