@@ -77,7 +77,7 @@ export default function ExposurePage() {
             </Grid>
             <Typography variant='h6' className='p-5 font-hw'>Exposure Calendar</Typography>
             <HeatMap xLabels={xLabels} yLabels={yLabels} data={data} />
-            <Typography variant='h6' className='p-5 font-hw'>Factors</Typography>
+            <Typography variant='h6' className='p-5 font-hw'>Factor Loadings</Typography>
             <MyDataGrid className='my-20' columns={defaultColumns} rows={defaultRows} />
             <Box className='flex items-center justify-center'>
               <TradingViewWidget className='h-full w-full'/>

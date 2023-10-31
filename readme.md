@@ -20,7 +20,10 @@ Visualizations:
 
 ![Mobile](./assets/mobile.png)
 
+Pages
+![Execution](./assets/Execution.png)
 
+![Exposure](./assets/Exposure.png)
 
 
 Entrypoint Flow
