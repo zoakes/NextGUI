@@ -16,6 +16,7 @@ export default async function handler(req, res) {
 }
 
 /*
+// SAMPLE usage (in client-side)
 
 // this is read only, so fairly safe from sql-injection type stuff, can make it a read only key.
 
