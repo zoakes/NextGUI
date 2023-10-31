@@ -1,9 +1,10 @@
 import SearchAppBar from '../components/SearchBar';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Paper } from '@mui/material';
 import TreeExample from '../components/charts/TreeMap';
 import Heatmap from '../components/charts/HCHeatmap';
 import CardInvertedColors from '../components/cards/JoyCard';
 import MyDataGrid from '../components/tables/DataTable';
+import TradingViewWidget from '../components/charts/TVHeatmap';
 
 export default function ExposurePage() {
   const card_props = [
@@ -64,8 +65,10 @@ export default function ExposurePage() {
                 </Grid>
               ))}
             </Grid>
-            {/* <Heatmap /> FUCK -- was working... */}
             <MyDataGrid className='my-20' columns={defaultColumns} rows={defaultRows} />
+            <Box className='flex items-center justify-center'>
+              <TradingViewWidget className='h-full w-full'/>
+            </Box>
         </Box>
     </div>
    

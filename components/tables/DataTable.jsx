@@ -34,7 +34,7 @@ const defaultRows = [
   
 function MyDataGrid({ columns = defaultColumns, rows = defaultRows }) {
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: '100%', width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}
@@ -44,7 +44,7 @@ function MyDataGrid({ columns = defaultColumns, rows = defaultRows }) {
         checkboxSelection
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 0, pageSize: 10 },
           },
         }}
       />
