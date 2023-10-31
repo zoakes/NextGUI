@@ -83,7 +83,7 @@ export default function SearchAppBar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link href='/' className='hover:text-blue-400'>YX</Link>
+            <Link href='/' className='hover:text-blue-400 font-hw'>YX</Link>
             
           </Typography>
           <Box sx={{  display: { xs: 'none', sm: 'none', md: 'block'} , alignItems: 'center', textAlign: 'space-evenly' }}>

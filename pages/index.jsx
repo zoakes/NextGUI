@@ -72,7 +72,7 @@ export default function HomePage() {
             
             <ChartComponent data={initialData} />
             <div className='flex items-center justify-center'>
-              <h6>Chart {item}</h6>
+              <h6 className='font-hw'>Chart {item}</h6>
             </div>
 
           </Grid>

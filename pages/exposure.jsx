@@ -1,7 +1,8 @@
 import SearchAppBar from '../components/SearchBar';
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, Divider, Grid, Paper, Typography } from '@mui/material';
 import TreeExample from '../components/charts/TreeMap';
-import Heatmap from '../components/charts/HCHeatmap';
+// import Heatmap from '../components/charts/HCHeatmap';
+import HeatMap from 'react-heatmap-grid';
 import CardInvertedColors from '../components/cards/JoyCard';
 import MyDataGrid from '../components/tables/DataTable';
 import TradingViewWidget from '../components/charts/TVHeatmap';
@@ -47,6 +48,15 @@ export default function ExposurePage() {
       }
       return obj;
   });
+  const xLabels = new Array(24).fill(0).map((_, i) => `${i}`);
+  const yLabels = [ "Mon", "Tue", "Wed","Thu","Fri"];
+  const data = new Array(yLabels.length)
+    .fill(0)
+    .map(() =>
+      new Array(xLabels.length).fill(0).map(() => Math.floor(Math.random() * 100))
+    );
+
+
 
   return (
     <div>
@@ -65,10 +75,14 @@ export default function ExposurePage() {
                 </Grid>
               ))}
             </Grid>
+            <Typography variant='h6' className='p-5 font-hw'>Exposure Calendar</Typography>
+            <HeatMap xLabels={xLabels} yLabels={yLabels} data={data} />
+            <Typography variant='h6' className='p-5 font-hw'>Factors</Typography>
             <MyDataGrid className='my-20' columns={defaultColumns} rows={defaultRows} />
             <Box className='flex items-center justify-center'>
               <TradingViewWidget className='h-full w-full'/>
             </Box>
+            
         </Box>
     </div>
    

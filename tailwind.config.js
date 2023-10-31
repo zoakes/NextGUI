@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'hw': ['Just Another Hand', 'cursive'],
+      },
       colors: {
         'custom-blue': '#243c5a',
       },
