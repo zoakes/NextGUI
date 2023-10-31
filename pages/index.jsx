@@ -55,8 +55,8 @@ export default function HomePage() {
       <SearchAppBar></SearchAppBar>
       <Grid container spacing={2} className='my-5'>
         {card_props.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
-            <div className='flex items-center justify-center'>
+          <Grid item sm={6} md={4} lg={3} key={item}>
+            <div className='pl-5 flex items-center justify-center'>
               <CardInvertedColors 
                 title={item.title} 
                 progress={item.progress} 
