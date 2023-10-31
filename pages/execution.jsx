@@ -125,13 +125,13 @@ export default function ExecPage() {
         </Box>
 
         <Box className='p-10 justify-center align-center'>
-            <Typography variant='h5' className='px-10 pb-5'>Quality</Typography>
+            <Typography variant='h5' className='px-10 pb-5 font-hw'>Quality</Typography>
             {/* <MultiLineChartComponent /> */}
             <ChartComponent data={initialData} />
             
 
 
-            <Typography variant='h5' className='px-10 pb-5'>Fills</Typography>
+            <Typography variant='h5' className='px-10 pb-5 font-hw'>Fills</Typography>
             <MyDataGrid columns={tableColumns} rows={tableRows}/>
         </Box>
     </div>
