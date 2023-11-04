@@ -1,5 +1,6 @@
 "use client";
 
+import SearchAppBar from '../components/SearchBar';
 import { InformationCircleIcon } from "@heroicons/react/solid";
 
 import {
@@ -213,9 +214,7 @@ export default function FinalDashboard() {
   };
   return (
     <main>
-      <Title>Dashboard</Title>
-      <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
-
+      <SearchAppBar></SearchAppBar>
       <TabGroup className="mt-6">
         <TabList>
           <Tab>Overview</Tab>
