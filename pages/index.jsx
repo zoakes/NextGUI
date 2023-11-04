@@ -14,6 +14,7 @@ import { algoConfig, host } from '../config';
 import { MultiLineChartComponent } from '../components/charts/ReChartComponent';
 import HighchartsExample from '../components/charts/HighchartComponent';
 import CardInvertedColors from '../components/cards/JoyCard';
+import TremorExample from '../components/cards/TremorExample';
 // const demo_uri = `${host}:${algoConfig[componentAlgoId]}`
 
 
@@ -57,10 +58,11 @@ export default function HomePage() {
         {card_props.map((item) => (
           <Grid item sm={6} md={4} lg={3} key={item}>
             <div className='pl-5 flex items-center justify-center'>
-              <CardInvertedColors 
-                title={item.title} 
-                progress={item.progress} 
-                value={item.value}
+              <TremorExample 
+                title={item.title}
+                progressPercentage={item.progress}
+                metric={item.value}
+                target=''
               />
             </div>
           </Grid>
