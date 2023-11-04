@@ -54,10 +54,11 @@ export default function HomePage() {
   return (
     <div>
       <SearchAppBar></SearchAppBar>
-      <Grid container spacing={2} className='my-5'>
+      <Typography variant='h5' className='pl-5 pt-5 font-hw'>KPIs</Typography>
+      <Grid container spacing={2} className='mb-5'>
         {card_props.map((item) => (
-          <Grid item sm={6} md={4} lg={3} key={item}>
-            <div className='pl-5 flex items-center justify-center'>
+          <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
+            <div className='p-5 flex items-center justify-center'>
               <TremorExample 
                 title={item.title}
                 progressPercentage={item.progress}
@@ -68,6 +69,7 @@ export default function HomePage() {
           </Grid>
         ))}
       </Grid>
+      <Typography variant='h5' className='pl-5 pt-5 font-hw'>Pairs</Typography>
       <Grid container spacing={2} className='my-5'>
         {chart_ids.map((item) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={item}>
