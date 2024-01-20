@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { Box, Paper, Toolbar, Typography } from '@mui/material';
-
-
-
-
 import SearchAppBar from '../components/SearchBar';
 import { ChartComponent } from '../components/charts/ChartComponent';
 // import styles from '../styles/ButtonStyles.module.css'; // Not working (need to read more on tailwind)

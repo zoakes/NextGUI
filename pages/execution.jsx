@@ -128,9 +128,6 @@ export default function ExecPage() {
             <Typography variant='h5' className='px-10 pb-5 font-hw'>Quality</Typography>
             {/* <MultiLineChartComponent /> */}
             <ChartComponent data={initialData} />
-            
-
-
             <Typography variant='h5' className='px-10 pb-5 font-hw'>Fills</Typography>
             <MyDataGrid columns={tableColumns} rows={tableRows}/>
         </Box>
