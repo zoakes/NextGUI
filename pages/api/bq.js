@@ -26,22 +26,6 @@ async function _runCustomQuery(sqlQuery) {
 }
 
 
-/*
-EXAMPLE: 
-queryTableFiltered({
-    project: 'yxtrading-toplevel',
-    dataset: 'yx_bq',
-    table: 'algo_out',
-    startDate: '2023-01-01',
-    endDate: '2023-12-31',
-    symbol: 'AAPL',
-    limit: 10,
-    offset: 0,
-}).then((result) => {
-    // Process the result here
-});
-*/
-
 async function queryTableFiltered({ project, dataset, table, startDate, endDate, symbol, limit = 10, offset = 0  }) {
     let sqlQuery = `SELECT * FROM \`${project}.${dataset}.${table}\``;
 
@@ -88,26 +72,40 @@ async function generateColumnsFromSchema(project, dataset, table) {
     return columns;
 }
 
-// Function to fetch and map data
-async function fetchDataAndMap(project, dataset, table, startDate, endDate, symbol, limit, offset) {
-    const columns = await generateColumnsFromSchema(project, dataset, table);
-    // Fetch data using queryTableFiltered or your preferred method
-    const bqData = await queryTableFiltered({ project, dataset, table, startDate, endDate, symbol, limit, offset });
-    
-    // Map BigQuery data to match the generated columns
-    const tableRows = bqData.map((row) => {
-        const mappedRow = {};
-        columns.forEach((column) => {
-            mappedRow[column.field] = row[column.field];
-        });
-        return mappedRow;
+async function queryTableAndMapToFormat({  
+    project,
+    dataset,
+    table,
+    startDate,
+    endDate,
+    symbol,
+    limit = 10,
+    offset = 0,
+}) {
+    const tableColumns = await generateColumnsFromSchema({project, dataset, table});
+
+    const bqData = await queryTableFiltered({
+        project,
+        dataset,
+        table,
+        startDate,
+        endDate,
+        symbol,
+        limit,
+        offset,
     });
 
-    return { columns, tableRows };
+    const tableRows = bqData.map((row, index) => ({
+        id: index + 1,
+        ...row,
+    }));
+
+    console.log("rows: %d", tableRows);
+    return { tableColumns, tableRows };
 }
 
 
 
 
 // Export the function to make it available in other modules
-module.exports = { queryTableFiltered,  fetchDataAndMap};
+module.exports = { queryTableFiltered,  queryTableAndMapToFormat};
