@@ -9,10 +9,23 @@ import MyAgTable from '../components/tables/AGTable';
 
 
 // TEMPORARY
+
+const ChangeCellRenderer = ({ value }) => {
+    const isPositive = value >= 0;
+    const style = {
+      color: isPositive ? 'green' : 'red',
+      fontWeight: 'bold'
+    };
+    const formattedValue = isPositive ? `↑ ${value}%` : `↓ ${value}%`;
+  
+    return <span style={style}>{formattedValue}</span>;
+  };
+
+
 const columnDefs = [
     { headerName: "Make", field: "make", checkboxSelection: true },
     { headerName: "Model", field: "model" },
-    { headerName: "Price", field: "price" },
+    { headerName: "Price", field: "price", cellRenderer: ChangeCellRenderer },
   ];
 
   const rowData = [
