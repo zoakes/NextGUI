@@ -6,6 +6,9 @@ import { MultiLineChartComponent } from '../components/charts/ReChartComponent';
 import SearchAppBar from '../components/SearchBar';
 import { Box, Grid, Typography } from '@mui/material';
 import MyAgTable from '../components/tables/AGTable';
+import React, { useState, useEffect } from 'react';
+import GridExample from '../components/tables/DemoAG';
+
 
 
 // TEMPORARY
@@ -118,6 +121,39 @@ export default function ExecPage() {
         // ... other rows
     ];
 
+
+    // ------- FETCH data
+    const [data, setData] = useState(rowData); 
+    const [col, setCol] = useState(columnDefs);
+
+
+    // // fetch('/api/data/')
+    // useEffect(() => {
+    //     // Start fetching the data when the component mounts
+    //     fetch('/api/data?type=fills')
+    //       .then(response => {
+    //         if (!response.ok) {
+    //           throw new Error('Network response was not ok ' + response.statusText);
+    //         }
+    //         return response.json();
+    //       })
+    //       .then(data => {
+    //         setData(data); // Set the data in the state
+            
+
+    //         const newcolumnDefs = Object.keys(data[0]).map(key => ({
+    //             headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the first letter for the headerName
+    //             field: key
+    //           }));
+
+    //         setCol(newcolumnDefs);
+
+    //       })
+    //       .catch(error => {
+    //         console.log("error... ", error);            
+    //       });
+    //   }, []); 
+
   return (
     <div>
         <SearchAppBar />
@@ -161,7 +197,10 @@ export default function ExecPage() {
             <MyDataGrid columns={tableColumns} rows={tableRows}/>
         </Box>
         <Box>
-            <MyAgTable rowData={rowData} columnDefs={columnDefs} />
+            <MyAgTable rowData={rowData} columnDefs={col} />
+        </Box>
+        <Box>
+            <GridExample endpoint={''}/>
         </Box>
     </div>
    

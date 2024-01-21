@@ -1,6 +1,6 @@
 // pages/api/data.js
 
-import { queryTableFiltered, queryTableAndMapToFormat } from './bq'; // Import your functions from bq.js
+import { queryTableFiltered, queryLatestOutputs } from './bq'; // Import your functions from bq.js
 
 
 // import { NextApiRequest, NextApiResponse } from 'next';
@@ -13,7 +13,7 @@ export default async (req, res) => {
   // console.log(req.query);
   console.log(req.url); // This will show you the full URL requested, including query parameters.
 
-  // GET handling.
+  // GET handling. -- /api/data?type=fills
   if (req.method === 'GET') {
 
     const { query } = req;
@@ -29,6 +29,9 @@ export default async (req, res) => {
             break;
         case 'output':
             tableName = 'algo_out';
+            break;
+        case 'latest_output':
+            tableName = 'latest_runs_outputs';
             break;
         default:
             // Handle unsupported endpoints or provide a default table name
