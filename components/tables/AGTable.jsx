@@ -1,55 +1,62 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-grid.css'; // Core grid styles
+// import 'ag-grid-community/styles/ag-theme-alpine-dark.css'; // Dark theme
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 const MyAgTable = ({ rowData, columnDefs }) => {
   const [gridApi, setGridApi] = useState(null);
+  const [visibleColumns, setVisibleColumns] = useState(columnDefs.map(col => col.field));
 
   const onGridReady = useCallback((params) => {
     setGridApi(params.api);
   }, []);
 
-  const onCellValueChanged = useCallback((event) => {
-    console.log('Data after change:', event.data);
-  }, []);
+  useEffect(() => {
+    if (gridApi) {
+      gridApi.setColumnsVisible(columnDefs.map(col => col.field), false); // Hide all columns initially
+      gridApi.setColumnsVisible(visibleColumns, true); // Show only selected columns
+    }
+  }, [gridApi, visibleColumns, columnDefs]);
 
-  const defaultColDef = useMemo(() => ({
-    editable: true,
-    sortable: true,
-    filter: true,
-    resizable: true,
-    floatingFilter: true,
-  }), []);
-
-  // Function to export the data to CSV. You can call this from a button click event handler.
-  const exportData = useCallback(() => {
-    gridApi.exportDataAsCsv();
-  }, [gridApi]);
-
-  // Toggle column pinning
-  const togglePinning = useCallback((field) => {
-    const col = gridApi.getColumnDefs().find(c => c.field === field);
-    const currentPinned = col.pinned;
-    gridApi.setColumnPinned(field, currentPinned ? null : 'left');
-  }, [gridApi]);
-
-  // Additional features setup could be done similarly or integrated into UI elements outside the grid
+  const handleColumnToggle = (field) => {
+    setVisibleColumns(current => 
+      current.includes(field)
+        ? current.filter(f => f !== field)
+        : [...current, field]
+    );
+  };
 
   return (
     <>
-      <button onClick={exportData}>Export CSV</button>
+      <div style={{ marginBottom: '10px' }}>
+        <b>Select Columns:</b> {columnDefs.map(col => (
+          <label key={col.field} style={{ marginLeft: '10px' }}>
+            <input
+              type="checkbox"
+              checked={visibleColumns.includes(col.field)}
+              onChange={() => handleColumnToggle(col.field)}
+            /> {col.headerName}
+          </label>
+        ))}
+      </div>
+      <button onClick={() => gridApi.exportDataAsCsv()}>Export CSV</button>
       <div className="ag-theme-alpine" style={{ height: 600, width: '100%' }}>
         <AgGridReact
-          defaultColDef={defaultColDef}
+          defaultColDef={{
+            editable: true,
+            sortable: true,
+            filter: true,
+            resizable: true,
+            floatingFilter: true,
+            
+          }}
           columnDefs={columnDefs}
           rowData={rowData}
           onGridReady={onGridReady}
-          onCellValueChanged={onCellValueChanged}
           animateRows={true}
           enableRangeSelection={true}
           enableCellChangeFlash={true}
-          // Other properties as needed
         />
       </div>
     </>
