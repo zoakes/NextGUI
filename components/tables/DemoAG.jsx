@@ -45,6 +45,7 @@ const GridExample = ({endpoint = ""}) => {
         const newcolDefs = Object.keys(data[0]).map(key => ({
             // headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the first letter for the headerName
             field: key
+            
         }));
         console.log(data);
         // console.log(newcolDefs);
@@ -83,12 +84,11 @@ const GridExample = ({endpoint = ""}) => {
       } else {
         return {
           ...row, // Spread the original row properties
-          hedge_ratio: row.hedge_ratio + Math.random() // Update the hedge_ratio
+          hedge_ratio: row.hedge_ratio + (Math.random() * 2) - 1 // Update the hedge_ratio
         };
       }
     }));
   }, []);
-
 
   return (
     // Container
