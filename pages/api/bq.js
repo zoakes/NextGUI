@@ -52,6 +52,8 @@ async function queryTableFiltered({ project, dataset, table, startDate, endDate,
     return _runCustomQuery(sqlQuery);
 }
 
+// DONT think we actually need this shit -- can just pull the columns as the key names from list of rows (easy)
+
 // Function to fetch the schema from BigQuery
 async function fetchSchema(project, dataset, table) {
     const datasetRef = bigquery.dataset(dataset, { location: 'US' });

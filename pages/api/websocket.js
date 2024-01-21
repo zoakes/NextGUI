@@ -1,6 +1,7 @@
 // Can temporarily use this, will treat it like node.js
 // In prod -- set up another endpoint somewhere, for the real ws server. 
 
+/*
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
@@ -70,6 +71,9 @@ module.exports = {
     wssMap,
     startWebSocketServer
 };
+
+
+*/
 
 
 /*
