@@ -44,10 +44,11 @@ const GridExample = ({endpoint = ""}) => {
         // (hard coded, ish) -- if key == whatever, whatever.
         const newcolDefs = Object.keys(data[0]).map(key => ({
             // headerName: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize the first letter for the headerName
-            field: key
+            field: key,
+            cellRenderer: key === 'hedge_ratio' ? 'agAnimateShowChangeCellRenderer' : null
             
         }));
-        console.log(data);
+        // console.log(data);
         // console.log(newcolDefs);
         setRowData(null);
         setColDefs(newcolDefs);
@@ -71,7 +72,7 @@ const GridExample = ({endpoint = ""}) => {
   }, [rowData]);
 
   const getRowId = useCallback( params => {
-    console.log(params);
+    // console.log(params);
     return params.data.id; // data refers to ROW I believe? so we need some 'row' identifier here.
   })
 
@@ -99,7 +100,7 @@ const GridExample = ({endpoint = ""}) => {
         </div>
         {/* The AG Grid component */}
         <AgGridReact ref={gridRef}
-            enableCellChangeFlash={true}
+            // enableCellChangeFlash={true}
             rowSelection={'multiple'}
             getRowId={getRowId}
             rowData={rowData} 
