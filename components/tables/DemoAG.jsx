@@ -58,13 +58,16 @@ const GridExample = ({endpoint = ""}) => {
 
 
 
-  // this is a BIT flawed, bc it is reusing the other id.... 
   const insertRandom = useCallback(() => {
-    // Correctly accessing the length property
-    const newRecord = rowData[getRandomInt(0, rowData.length - 1)]; // Adjust to -1 because arrays are 0-indexed
-    const new_data = [newRecord, ...rowData]; // Prepending the new record
-    setRowData(new_data);
-  }, [rowData]); // Adding rowData to the dependency array
+    // Assuming rowData is not empty and each item has an 'id' property
+    if (rowData.length > 0) {
+      const randomIndex = getRandomInt(0, rowData.length - 1);
+      const newRecord = { ...rowData[randomIndex] }; 
+      newRecord.id = newRecord.id * 100; 
+      const newData = [...rowData, newRecord]; 
+      setRowData(newData);
+    }
+  }, [rowData]);
 
   const getRowId = useCallback( params => {
     console.log(params);
