@@ -3,12 +3,20 @@ import "ag-grid-community/styles/ag-grid.css"; // Core CSS
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Theme
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-
-let cars = [
+// ------------------ DEFAULT DATA ------------------- (DEMO)
+let defRows = [
     { make: "Tesla", model: "Model Y", price: 64950, electric: true },
     { make: "Ford", model: "F-Series", price: 33850, electric: false },
     { make: "Toyota", model: "Corolla", price: 29600, electric: false },
 ];
+
+let defColDefs = [
+    { field: "make" },
+    { field: "model" },
+    { field: "price" },
+    { field: "electric" }
+];
+
 
 function getRandomInt(x, y) {
     return Math.floor(Math.random() * (y - x + 1)) + x;
@@ -18,15 +26,10 @@ const GridExample = ({endpoint = ""}) => {
 
   const gridRef = useRef();
   // Row Data: The data to be displayed.
-  const [rowData, setRowData] = useState(cars);
+  const [rowData, setRowData] = useState(defRows);
   
   // Column Definitions: Defines & controls grid columns.
-  const [colDefs, setColDefs] = useState([
-    { field: "make" },
-    { field: "model" },
-    { field: "price" },
-    { field: "electric" }
-  ]);
+  const [colDefs, setColDefs] = useState(defColDefs);
 
   
   useEffect( () => {
