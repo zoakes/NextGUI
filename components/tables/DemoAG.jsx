@@ -75,14 +75,31 @@ const GridExample = ({endpoint = ""}) => {
   })
 
 
+  const randomUpdate = useCallback(() => {
+    setRowData(oldRows => oldRows.map(row => {
+      // Randomly decide whether to update this row
+      if (Math.random() > 0.5) {
+        return row; // Return the row unchanged
+      } else {
+        return {
+          ...row, // Spread the original row properties
+          hedge_ratio: row.hedge_ratio + Math.random() // Update the hedge_ratio
+        };
+      }
+    }));
+  }, []);
+
+
   return (
     // Container
     <div className="ag-theme-quartz" style={{ height: 500 }}>
         <div>
             <button onClick={insertRandom}>Insert Random</button>
+            <button onClick={randomUpdate}>Update Random HR</button>
         </div>
         {/* The AG Grid component */}
         <AgGridReact ref={gridRef}
+            enableCellChangeFlash={true}
             rowSelection={'multiple'}
             getRowId={getRowId}
             rowData={rowData} 
