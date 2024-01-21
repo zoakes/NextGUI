@@ -5,6 +5,22 @@ import CardInvertedColors from '../components/cards/JoyCard';
 import { MultiLineChartComponent } from '../components/charts/ReChartComponent';
 import SearchAppBar from '../components/SearchBar';
 import { Box, Grid, Typography } from '@mui/material';
+import MyAgTable from '../components/tables/AGTable';
+
+
+// TEMPORARY
+const columnDefs = [
+    { headerName: "Make", field: "make", checkboxSelection: true },
+    { headerName: "Model", field: "model" },
+    { headerName: "Price", field: "price" },
+  ];
+
+  const rowData = [
+    { make: "Toyota", model: "Celica", price: 35000 },
+    { make: "Ford", model: "Mondeo", price: 32000 },
+    { make: "Porsche", model: "Boxster", price: 72000 },
+  ];
+
 
 export default function ExecPage() {
     const card_props = [
@@ -130,6 +146,9 @@ export default function ExecPage() {
             <ChartComponent data={initialData} />
             <Typography variant='h5' className='px-10 pb-5 font-hw'>Fills</Typography>
             <MyDataGrid columns={tableColumns} rows={tableRows}/>
+        </Box>
+        <Box>
+            <MyAgTable rowData={rowData} columnDefs={columnDefs} />
         </Box>
     </div>
    

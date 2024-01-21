@@ -48,6 +48,7 @@ async function queryTableFiltered({ project, dataset, table, startDate, endDate,
     if (offset) {
         sqlQuery += ` OFFSET ${offset}`;
     }
+    // sqlQuery += ` ORDER BY time`; // need this, not workign rn tho.
 
     return _runCustomQuery(sqlQuery);
 }
