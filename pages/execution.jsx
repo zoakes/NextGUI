@@ -23,7 +23,7 @@ const ChangeCellRenderer = ({ value }) => {
 
 
 const columnDefs = [
-    { headerName: "Make", field: "make", checkboxSelection: true },
+    { headerName: "Make", field: "make", checkboxSelection: true, rowDrag: true },
     { headerName: "Model", field: "model" },
     { headerName: "Price", field: "price", cellRenderer: ChangeCellRenderer },
   ];

@@ -53,6 +53,7 @@ const MyAgTable = ({ rowData, columnDefs }) => {
           }}
           columnDefs={columnDefs}
           rowData={rowData}
+          rowDragManaged={true}
           onGridReady={onGridReady}
           animateRows={true}
           enableRangeSelection={true}
