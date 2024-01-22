@@ -103,7 +103,7 @@ const GridExample = ({endpoint = ""}) => {
         </div>
         {/* The AG Grid component */}
         <AgGridReact ref={gridRef}
-            // enableCellChangeFlash={true}
+            // enableCellChangeFlash={true} // this is the more basic 'flash change' -- agAnimate is better.
             rowSelection={'multiple'}
             getRowId={getRowId}
             rowData={rowData} 
